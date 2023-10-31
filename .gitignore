@@ -95,3 +95,7 @@ sw.*
 .vercel
 
 .nitro
+
+#electron
+dist-electron
+release

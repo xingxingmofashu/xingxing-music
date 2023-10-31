@@ -17,8 +17,22 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     '@element-plus/nuxt',
-    'nuxt-lodash'
+    'nuxt-lodash',
+    'nuxt-electron'
   ],
+  electron: {
+    build: [{
+      entry: 'electron/main.ts',
+    }, {
+      entry: 'electron/preload.ts',
+      onstart(options) {
+        // Notify the Renderer-Process to reload the page when the Preload-Scripts build is complete, 
+        // instead of restarting the entire Electron App.
+        options.reload()
+      },
+    }],
+    renderer: {}
+  },
   nitro: {
     routeRules: {
       '/**': { isr: false },
