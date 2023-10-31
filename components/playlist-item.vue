@@ -25,8 +25,9 @@ defineProps<{
 }
 
 .song-list-img {
-    width: 180px;
-    height: 180px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     border-radius: 10px;
     margin: 0 10px;
     cursor: pointer;
