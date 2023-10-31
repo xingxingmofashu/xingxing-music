@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <ElContainer>
+    <ElContainer class="container">
       <Background />
       <div class="app">
         <ElHeader>
@@ -22,3 +22,12 @@
     </ElContainer>
   </ClientOnly>
 </template>
+<style scoped>
+.container{
+  width: 100%;
+  height: 100%;
+}
+.app{
+  -webkit-app-region: no-drag;
+}
+</style>

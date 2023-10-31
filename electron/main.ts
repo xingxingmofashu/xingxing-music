@@ -9,12 +9,12 @@ process.env.VITE_PUBLIC = process.env.VITE_DEV_SERVER_URL
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 
 const preload = path.join(process.env.DIST, 'preload.js')
-Menu.setApplicationMenu(null);
 const createWindow = () => {
     const win = new BrowserWindow({
         icon:'/music.ico',
         minWidth:1100,
         minHeight:600,
+        frame:true,
         webPreferences: {
             preload,
             nodeIntegrationInWorker: true,
@@ -25,7 +25,7 @@ const createWindow = () => {
     })
     if (process.env.VITE_DEV_SERVER_URL) {
         win.loadURL(process.env.VITE_DEV_SERVER_URL)
-        //win.webContents.openDevTools()
+        win.webContents.openDevTools()
     } else {
         win.loadFile(path.join(process.env.VITE_PUBLIC!, 'index.html'))
     }
