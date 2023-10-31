@@ -12,7 +12,7 @@ const preload = path.join(process.env.DIST, 'preload.js')
 Menu.setApplicationMenu(null);
 const createWindow = () => {
     const win = new BrowserWindow({
-        icon:path.join(__dirname,'./public/music.ico'),
+        icon:'/music.ico',
         minWidth:1100,
         minHeight:600,
         webPreferences: {

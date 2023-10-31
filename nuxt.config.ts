@@ -1,4 +1,5 @@
 const isDev = process.env.NODE_ENV === 'development'
+const isElectron = process.env.NUXT_ISELECTRON
 export default defineNuxtConfig({
   app: {
     head: {
@@ -21,17 +22,9 @@ export default defineNuxtConfig({
     'nuxt-electron'
   ],
   electron: {
-    build: [{
-      entry: 'electron/main.ts',
-    }, {
-      entry: 'electron/preload.ts',
-      onstart(options) {
-        // Notify the Renderer-Process to reload the page when the Preload-Scripts build is complete, 
-        // instead of restarting the entire Electron App.
-        options.reload()
-      },
-    }],
-    renderer: {}
+    build: isElectron === 'true' ? [{
+      entry:'electron/main.ts'
+    }] : []
   },
   nitro: {
     routeRules: {
@@ -45,7 +38,7 @@ export default defineNuxtConfig({
     autoImports: ['defineStore', 'acceptHMRUpdate'],
   },
   vite: {
-    plugins: []
+    plugins: [],
   },
   appConfig: {
     limit: 24

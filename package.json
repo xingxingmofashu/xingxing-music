@@ -1,12 +1,12 @@
 {
-  "name":"NetEaseCloudMusic",
+  "name":"xingxing-music",
   "version":"1.0.0",
   "private": true,
   "packageManager": "pnpm@8.6.10",
   "main":"dist-electron/main.js",
   "scripts": {
-    "build": "nuxt build",
     "dev": "nuxt dev",
+    "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
