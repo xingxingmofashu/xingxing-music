@@ -1,17 +1,17 @@
 {
-  "name":"xingxing-music",
-  "version":"1.0.0",
+  "name": "xingxing-music",
+  "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@8.6.10",
-  "main":"dist-electron/main.js",
+  "main": "dist-electron/main.js",
   "scripts": {
-    "dev": "nuxt dev",
+    "dev": "nuxt dev ",
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "dev:electron":"nuxt dev --prerender && electron .",
-    "build:electron": "nuxt build --prerender && electron-builder",
+    "dev:electron": "ISELECTRON=true nuxt dev && electron .",
+    "build:electron": "ISELECTRON=true nuxt build --prerender && electron-builder",
     "dev:proxy": "cd proxy && pnpm dev"
   },
   "devDependencies": {

@@ -1,16 +1,16 @@
 const isDev = process.env.NODE_ENV === 'development'
-const isElectron = process.env.NUXT_ISELECTRON
+const isElectron = process.env.ISELECTRON
 export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: {
         lang: "zh-CN"
       },
-      title: 'Netease Cloud Music',
+      title: 'XingXingMusic',
       meta: [
         { charset: 'utf-8' }
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/music.ico' }]
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/music.ico' }],
     }
   },
   ssr: false,
@@ -23,7 +23,12 @@ export default defineNuxtConfig({
   ],
   electron: {
     build: isElectron === 'true' ? [{
-      entry:'electron/main.ts'
+      entry: 'electron/main.ts'
+    }, {
+      entry: 'electron/preload.ts',
+      onstart(options) {
+        options.reload();
+      }
     }] : []
   },
   nitro: {

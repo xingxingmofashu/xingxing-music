@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu } from 'electron'
+import { app, BrowserWindow, ipcMain, Menu } from 'electron'
 import path from 'path'
 
 process.env.ROOT = path.join(__dirname, '..')
@@ -7,18 +7,17 @@ process.env.VITE_PUBLIC = process.env.VITE_DEV_SERVER_URL
     ? path.join(process.env.ROOT, 'public')
     : path.join(process.env.ROOT, '.output/public')
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
-
 const preload = path.join(process.env.DIST, 'preload.js')
 const createWindow = () => {
     const win = new BrowserWindow({
-        icon:'/music.ico',
-        minWidth:1100,
-        minHeight:600,
-        frame:true,
+        icon: path.join(__dirname,'..','./public/music.ico'),
+        minWidth: 1100,
+        minHeight: 600,
+        frame: true,
         webPreferences: {
             preload,
             nodeIntegrationInWorker: true,
-            contextIsolation: false,
+            contextIsolation: true,
             nodeIntegration: true,
             webSecurity: false,
         },
@@ -29,6 +28,23 @@ const createWindow = () => {
     } else {
         win.loadFile(path.join(process.env.VITE_PUBLIC!, 'index.html'))
     }
+    
+    ipcMain.handle('window-close',()=>{
+        win.close();
+    })
 }
 
-app.whenReady().then(createWindow)
+app.whenReady().then(() => {
+    createWindow()
+    app.on('activate', () => {
+        if (BrowserWindow.getAllWindows().length === 0) {
+            createWindow()
+        }
+    })
+})
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
+})

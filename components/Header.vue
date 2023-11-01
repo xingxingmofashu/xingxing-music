@@ -73,7 +73,7 @@
                         </ElIcon>
                     </ElCol>
                     <ElCol :span="8">
-                        <ElIcon color="#ffffff" :size="20">
+                        <ElIcon color="#ffffff" :size="20" id="window-close">
                             <IconWinClose />
                         </ElIcon>
                     </ElCol>
@@ -83,6 +83,7 @@
     </div>
 </template>
 <script lang="ts" setup>
+import { ipcRenderer } from 'electron';
 const router = useRouter();
 const searchValue = ref('');
 const forward = () => {
