@@ -1,3 +1,5 @@
+import type { ElectronOptions } from "nuxt-electron"
+
 const isDev = process.env.NODE_ENV === 'development'
 const isElectron = process.env.ISELECTRON
 export default defineNuxtConfig({
@@ -19,16 +21,13 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@element-plus/nuxt',
     'nuxt-lodash',
-    'nuxt-electron'
+    ['nuxt-electron']
   ],
   electron: {
     build: isElectron === 'true' ? [{
       entry: 'electron/main.ts'
     }, {
-      entry: 'electron/preload.ts',
-      onstart(options) {
-        options.reload();
-      }
+      entry: 'electron/preload.ts'
     }] : []
   },
   nitro: {

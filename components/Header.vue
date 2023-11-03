@@ -1,23 +1,23 @@
 <template>
-    <div class="header">
+    <div class="header app-drag">
         <ElRow>
             <ElCol :span="4">
-                <div class="header-menu">
+                <div class="header-menu ">
                     <h2 class="logo">
-                        <NuxtLink to="/">网易云音乐</NuxtLink>
+                        <NuxtLink to="/" class="app-no-drag">网易云音乐</NuxtLink>
                     </h2>
                 </div>
             </ElCol>
             <ElCol :span="4">
                 <ElRow class="header-menu-item" :align="'middle'">
                     <ElCol :span="8">
-                        <IconArrowLeft @click="back" />
+                        <IconArrowLeft  class="app-no-drag pointer" @click="$router.back();" />
                     </ElCol>
                     <ElCol :span="8">
-                        <IconArrowRight @click="forward" />
+                        <IconArrowRight  class="app-no-drag pointer" @click="$router.go(1);" />
                     </ElCol>
                     <ElCol :span="8">
-                        <IconRefresh @click="refresh" />
+                        <IconRefresh  class="app-no-drag pointer" @click="$router.go(0)" />
                     </ElCol>
                 </ElRow>
             </ElCol>
@@ -25,7 +25,7 @@
                 <ElRow class="header-menu-item" :align="'middle'">
                     <ElCol>
                         <div class="search-bar">
-                            <input type="text" placeholder="搜索" @keyup.enter="search" v-model="searchValue" />
+                            <input type="text"  class="app-no-drag" placeholder="搜索" @keyup.enter="search" v-model="searchValue" />
                         </div>
                     </ElCol>
                 </ElRow>
@@ -35,28 +35,28 @@
                     <ElCol :span="6" :offset="2">
                         <div class="pointer">
                             <ElIcon :size="24" :color="'#fff'">
-                                <IconMessage :num="2" />
+                                <IconMessage  class="app-no-drag" :num="2" />
                             </ElIcon>
                         </div>
                     </ElCol>
                     <ElCol :span="6" :offset="2">
                         <ElIcon :size="24" :color="'#fff'">
                             <div class="pointer">
-                                <IconCloud />
+                                <IconCloud  class="app-no-drag" />
                             </div>
                         </ElIcon>
                     </ElCol>
                     <ElCol :span="6" :offset="2">
                         <div class="pointer">
-                            <ElAvatar src="../assets/avatar.jpg" class="avatar" :size="32"></ElAvatar>
+                            <ElAvatar  src="../assets/avatar.jpg" class="avatar app-no-drag"  :size="32"></ElAvatar>
                         </div>
                     </ElCol>
                 </ElRow>
             </ElCol>
             <ElCol :span="1">
-                <ElRow  style="padding-top: 20px;height: 18px;" :align="'middle'" :justify="'center'">
+                <ElRow style="padding-top: 20px;height: 18px;" :align="'middle'" :justify="'center'">
                     <ElCol>
-                        <ElDivider  direction="vertical"/>
+                        <ElDivider direction="vertical" />
                     </ElCol>
                 </ElRow>
             </ElCol>
@@ -64,17 +64,17 @@
                 <ElRow class="header-menu-item" :align="'middle'">
                     <ElCol :span="8">
                         <ElIcon color="#ffffff" :size="20">
-                            <IconWinMinus />
+                            <IconWinMinus class="app-no-drag"  />
                         </ElIcon>
                     </ElCol>
                     <ElCol :span="8">
                         <ElIcon color="#ffffff" :size="16">
-                            <IconWinMax />
+                            <IconWinMax class="app-no-drag"  />
                         </ElIcon>
                     </ElCol>
                     <ElCol :span="8">
-                        <ElIcon color="#ffffff" :size="20" id="window-close">
-                            <IconWinClose />
+                        <ElIcon @click="$windowClose()" color="#ffffff" :size="20" id="window-close">
+                            <IconWinClose class="app-no-drag"  />
                         </ElIcon>
                     </ElCol>
                 </ElRow>
@@ -83,18 +83,10 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { ipcRenderer } from 'electron';
+const { $windowClose } = useNuxtApp();
+
 const router = useRouter();
 const searchValue = ref('');
-const forward = () => {
-    router.go(1);
-}
-const refresh = () => {
-    router.go(0);
-}
-const back = () => {
-    router.back();
-}
 const search = () => {
     router.push({
         path: "/search",
@@ -103,6 +95,15 @@ const search = () => {
 }
 </script>
 <style scoped>
+.app-drag {
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+}
+
+.app-no-drag {
+    -webkit-app-region: no-drag;
+}
+
 .avatar {
     border: 2px solid #fff;
 }

@@ -10,7 +10,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "dev:electron": "ISELECTRON=true nuxt dev && electron .",
+    "dev:electron": "ISELECTRON=true nuxt dev  && electron .",
     "build:electron": "ISELECTRON=true nuxt build --prerender && electron-builder",
     "dev:proxy": "cd proxy && pnpm dev"
   },

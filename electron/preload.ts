@@ -1,8 +1,5 @@
 import { contextBridge, ipcRenderer } from "electron";
 
 contextBridge.exposeInMainWorld('windowOperate', {
-    //close: ipcRenderer.invoke('window-close')
-    ping: () => ipcRenderer.invoke('ping')
+    windowClose: () => ipcRenderer.invoke('window-close')
 })
-
-console.log('preload')
