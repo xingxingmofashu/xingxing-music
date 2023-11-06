@@ -11,13 +11,13 @@
             <ElCol :span="4">
                 <ElRow class="header-menu-item" :align="'middle'">
                     <ElCol :span="8">
-                        <IconArrowLeft  class="app-no-drag pointer" @click="$router.back();" />
+                        <IconArrowLeft class="app-no-drag pointer" @click="$router.back();" />
                     </ElCol>
                     <ElCol :span="8">
-                        <IconArrowRight  class="app-no-drag pointer" @click="$router.go(1);" />
+                        <IconArrowRight class="app-no-drag pointer" @click="$router.go(1);" />
                     </ElCol>
                     <ElCol :span="8">
-                        <IconRefresh  class="app-no-drag pointer" @click="$router.go(0)" />
+                        <IconRefresh class="app-no-drag pointer" @click="$router.go(0)" />
                     </ElCol>
                 </ElRow>
             </ElCol>
@@ -25,7 +25,8 @@
                 <ElRow class="header-menu-item" :align="'middle'">
                     <ElCol>
                         <div class="search-bar">
-                            <input type="text"  class="app-no-drag" placeholder="搜索" @keyup.enter="search" v-model="searchValue" />
+                            <input type="text" class="app-no-drag" placeholder="搜索" @keyup.enter="search"
+                                v-model="searchValue" />
                         </div>
                     </ElCol>
                 </ElRow>
@@ -35,20 +36,20 @@
                     <ElCol :span="6" :offset="2">
                         <div class="pointer">
                             <ElIcon :size="24" :color="'#fff'">
-                                <IconMessage  class="app-no-drag" :num="2" />
+                                <IconMessage class="app-no-drag" :num="2" />
                             </ElIcon>
                         </div>
                     </ElCol>
                     <ElCol :span="6" :offset="2">
                         <ElIcon :size="24" :color="'#fff'">
                             <div class="pointer">
-                                <IconCloud  class="app-no-drag" />
+                                <IconCloud class="app-no-drag" />
                             </div>
                         </ElIcon>
                     </ElCol>
                     <ElCol :span="6" :offset="2">
                         <div class="pointer">
-                            <ElAvatar  src="../assets/avatar.jpg" class="avatar app-no-drag"  :size="32"></ElAvatar>
+                            <ElAvatar src="../assets/avatar.jpg" class="avatar app-no-drag" :size="32"></ElAvatar>
                         </div>
                     </ElCol>
                 </ElRow>
@@ -64,17 +65,17 @@
                 <ElRow class="header-menu-item" :align="'middle'">
                     <ElCol :span="8">
                         <ElIcon color="#ffffff" :size="20">
-                            <IconWinMinus class="app-no-drag"  />
+                            <IconWinMinus @click="$windowMinimize" class="app-no-drag" />
                         </ElIcon>
                     </ElCol>
                     <ElCol :span="8">
                         <ElIcon color="#ffffff" :size="16">
-                            <IconWinMax class="app-no-drag"  />
+                            <IconWinMax @click="$windowMaximize" class="app-no-drag" />
                         </ElIcon>
                     </ElCol>
                     <ElCol :span="8">
                         <ElIcon @click="$windowClose()" color="#ffffff" :size="20" id="window-close">
-                            <IconWinClose class="app-no-drag"  />
+                            <IconWinClose class="app-no-drag" />
                         </ElIcon>
                     </ElCol>
                 </ElRow>
@@ -83,7 +84,7 @@
     </div>
 </template>
 <script lang="ts" setup>
-const { $windowClose } = useNuxtApp();
+const { $windowClose, $windowMaximize, $windowMinimize } = useNuxtApp();
 
 const router = useRouter();
 const searchValue = ref('');

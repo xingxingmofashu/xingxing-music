@@ -1,8 +1,10 @@
 export default defineNuxtPlugin(async () => {
-    const windowClose = window.windowOperate.windowClose
+    const { windowClose, windowMinimize, windowMaximize } = window.windowOperate;
     return {
         provide: {
-            windowClose
+            windowClose,
+            windowMinimize,
+            windowMaximize
         }
     }
 })

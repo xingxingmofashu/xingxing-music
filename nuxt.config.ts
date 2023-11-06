@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@element-plus/nuxt',
     'nuxt-lodash',
-    ['nuxt-electron']
+    'nuxt-electron'
   ],
   electron: {
     build: isElectron === 'true' ? [{

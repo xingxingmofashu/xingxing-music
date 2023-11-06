@@ -11,7 +11,7 @@ const preload = path.join(process.env.DIST, 'preload.js')
 
 const createWindow = () => {
     const win = new BrowserWindow({
-        icon: path.join(__dirname,'..','./public/music.ico'),
+        icon: path.join(__dirname, '..', './public/music.ico'),
         minWidth: 1100,
         minHeight: 600,
         frame: false,
@@ -29,9 +29,18 @@ const createWindow = () => {
     } else {
         win.loadFile(path.join(process.env.VITE_PUBLIC!, 'index.html'))
     }
-    
-    ipcMain.handle('window-close',()=>{
+
+    ipcMain.handle('window-close', () => {
         win.close();
+    })
+    ipcMain.handle('window-minimize', () => {
+        win.minimize();
+    })
+    ipcMain.handle('window-maximize', () => {
+        if (win.isMaximized())
+            win.restore()
+        else
+            win.maximize();
     })
 }
 
