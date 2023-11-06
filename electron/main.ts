@@ -40,7 +40,7 @@ const createWindow = () => {
         if (win.isMaximized())
             win.restore()
         else
-            win.maximize();
+            win.maximize(); 
     })
 }
 
