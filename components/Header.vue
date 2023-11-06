@@ -31,7 +31,7 @@
                     </ElCol>
                 </ElRow>
             </ElCol>
-            <ElCol :span="4">
+            <ElCol :span="4" :offset="isElectron ? 0 : 4">
                 <ElRow class="header-menu-item" :align="'middle'">
                     <ElCol :span="6" :offset="2">
                         <div class="pointer">
@@ -54,38 +54,43 @@
                     </ElCol>
                 </ElRow>
             </ElCol>
-            <ElCol :span="1">
-                <ElRow style="padding-top: 20px;height: 18px;" :align="'middle'" :justify="'center'">
-                    <ElCol>
-                        <ElDivider direction="vertical" />
-                    </ElCol>
-                </ElRow>
-            </ElCol>
-            <ElCol :span="3">
-                <ElRow class="header-menu-item" :align="'middle'">
-                    <ElCol :span="8">
-                        <ElIcon color="#ffffff" :size="20">
-                            <IconWinMinus @click="$windowMinimize" class="app-no-drag" />
-                        </ElIcon>
-                    </ElCol>
-                    <ElCol :span="8">
-                        <ElIcon color="#ffffff" :size="16">
-                            <IconWinMax @click="$windowMaximize" class="app-no-drag" />
-                        </ElIcon>
-                    </ElCol>
-                    <ElCol :span="8">
-                        <ElIcon @click="$windowClose()" color="#ffffff" :size="20" id="window-close">
-                            <IconWinClose class="app-no-drag" />
-                        </ElIcon>
-                    </ElCol>
-                </ElRow>
-            </ElCol>
+            <template v-if="isElectron">
+                <ElCol :span="1">
+                    <ElRow style="padding-top: 20px;height: 18px;" :align="'middle'" :justify="'center'">
+                        <ElCol>
+                            <ElDivider direction="vertical" />
+                        </ElCol>
+                    </ElRow>
+                </ElCol>
+                <ElCol :span="3">
+                    <ElRow class="header-menu-item" :align="'middle'">
+                        <ElCol :span="8">
+                            <ElIcon color="#ffffff" :size="20">
+                                <IconWinMinus @click="$windowMinimize" class="app-no-drag" />
+                            </ElIcon>
+                        </ElCol>
+                        <ElCol :span="8">
+                            <ElIcon color="#ffffff" :size="16">
+                                <IconWinMax @click="$windowMaximize" class="app-no-drag" />
+                            </ElIcon>
+                        </ElCol>
+                        <ElCol :span="8">
+                            <ElIcon @click="$windowClose()" color="#ffffff" :size="20" id="window-close">
+                                <IconWinClose class="app-no-drag" />
+                            </ElIcon>
+                        </ElCol>
+                    </ElRow>
+                </ElCol>
+            </template>
         </ElRow>
     </div>
 </template>
 <script lang="ts" setup>
-const { $windowClose, $windowMaximize, $windowMinimize } = useNuxtApp();
+import { storeToRefs } from 'pinia';
 
+const { $windowClose, $windowMaximize, $windowMinimize } = useNuxtApp();
+const electronStore = useElectronStore();
+const { isElectron } = storeToRefs(electronStore)
 const router = useRouter();
 const searchValue = ref('');
 const search = () => {

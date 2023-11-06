@@ -1,7 +1,5 @@
-import type { ElectronOptions } from "nuxt-electron"
-
 const isDev = process.env.NODE_ENV === 'development'
-const isElectron = process.env.ISELECTRON
+const isElectron = process.env.IS_ELECTRON === 'true'
 export default defineNuxtConfig({
   app: {
     head: {
@@ -24,7 +22,7 @@ export default defineNuxtConfig({
     'nuxt-electron'
   ],
   electron: {
-    build: isElectron === 'true' ? [{
+    build: isElectron ? [{
       entry: 'electron/main.ts'
     }, {
       entry: 'electron/preload.ts'
