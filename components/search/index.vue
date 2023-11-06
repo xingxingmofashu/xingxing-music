@@ -5,7 +5,7 @@
         </h1>
         搜索{{ total }}结果
     </div>
-    <button  class="content-button status-button button-set">
+    <button class="content-button status-button button-set">
         播放全部
     </button>
     <ElTabs v-model="activeName" @tab-change="handleChange">
@@ -115,7 +115,25 @@ const handleChange = async () => {
 }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
+.content-button {
+    background-color: #3a6df0;
+    border: none;
+    padding: 8px 26px;
+    color: #fff;
+    border-radius: 20px;
+    margin-top: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap;
+    text-decoration: none;
+}
+.content-section-title {
+    color: var(--content-title-color);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
 .song_items {
     display: flex;
     flex-direction: column;
@@ -127,50 +145,35 @@ const handleChange = async () => {
     margin: 0;
     border-radius: 14px;
     border: 1px solid var(--theme-bg-color);
+
     /* cursor: pointer; */
-}
+    li {
+        list-style: none;
+        padding: 2px 18px;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        width: 100%;
+        height: 100%;
+        white-space: nowrap;
+        transition: 0.3s;
+    }
 
-.song_items li {
-    list-style: none;
-    padding: 2px 18px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    width: 100%;
-    height: 100%;
-    white-space: nowrap;
-    transition: 0.3s;
-}
+    li:hover {
+        background-color: var(--theme-bg-color);
+    }
 
-.song_items li:hover {
-    background-color: var(--theme-bg-color);
-}
+    li:hover:first-child {
+        border-radius: 13px 13px 0 0;
+    }
 
-.song_items li:hover:first-child {
-    border-radius: 13px 13px 0 0;
-}
+    li:hover:last-child {
+        border-radius: 0 0 13px 13px;
+    }
 
-.song_items li:hover:last-child {
-    border-radius: 0 0 13px 13px;
-}
+    li+li {
+        border-top: 1px solid var(--border-color);
+    }
 
-.song_items li+li {
-    border-top: 1px solid var(--border-color);
-}
-
-.app-img-width {
-    width: 90%;
-    height: 220px;
-    border-radius: 10px;
-    margin: 0 10px;
-    cursor: pointer;
-}
-
-.song-list-text {
-    text-align: center;
-    font-weight: 500;
-    cursor: pointer;
-    font-size: 16px;
-    color: white;
 }
 </style>

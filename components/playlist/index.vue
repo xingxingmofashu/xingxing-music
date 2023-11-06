@@ -25,7 +25,7 @@
                             </button>
                             <div class="tags">
                                 <p>标签：</p>
-                                <ul class="tags">
+                                <ul>
                                     <li v-for="item in playlist.tags" :key="item.id">
                                         {{ item }}
                                     </li>
@@ -151,98 +151,24 @@ watch(currentPageComment, async () => {
     immediate: true
 })
 </script>
-<style scoped>
-.el-pagination {
-    margin-top: 5px;
+<style scoped lang="scss">
+.content-button {
+    background-color: #3a6df0;
+    border: none;
+    padding: 8px 26px;
+    color: #fff;
+    border-radius: 20px;
+    margin-top: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap;
+    text-decoration: none;
 }
 
-.comment {
-    margin-left: 30px;
-}
-
-.song-detail {
-    margin-top: 1px;
-}
-
-.app-song-detail {
-    width: 100%;
-    padding: 10px;
-    background-color: var(--content-bg);
-    border-radius: 14px;
-    border: 1px solid var(--theme-bg-color);
-    padding: 5px;
-    font-size: 16px;
-}
-
-.cover-img-size {
-    width: 250px;
-    position: relative;
-    display: inline;
-}
-
-.cover-img-size img {
-    border-radius: 10px;
-    display: block;
-    width: 100%;
-}
-
-.song-list-wrap {
-    display: flex;
-    flex-direction: row;
-}
-
-.song-list-title {
-    font-weight: 200;
-    display: inline;
-    margin: 5px 0;
-}
-
-.song-info {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-}
-
-.song-info p {
-    color: var(--inactive-color);
-}
-
-.author {
-    display: flex;
-    flex-direction: row;
-    height: 50px;
-    line-height: 50px;
-}
-
-.author span {
-    margin-left: 15px;
-}
-
-.tags {
-    display: flex;
-    flex-direction: row;
-}
-
-.tags p {
-    padding: 0;
-    margin: 10px 0;
-    font-size: 14px;
-}
-
-.tags ul {
-    padding: 0;
-    margin: 10px 0;
-}
-
-.tags ul li {
-    margin-left: 10px;
-    list-style: none;
-    color: var(--inactive-color);
-    font-size: 14px;
-}
-
-.img {
-    border-radius: 50%;
+.menu-link-main {
+    color: var(--content-title-color);
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .button-set {
@@ -252,10 +178,121 @@ watch(currentPageComment, async () => {
     padding: 10px;
 }
 
-.introduction {
-    margin: 0;
-    font-size: 14px;
+.content-section {
+    .content-section-title {
+        color: var(--content-title-color);
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .comment {
+        margin-left: 30px;
+    }
 }
+
+.el-pagination {
+    margin-top: 5px;
+}
+
+
+
+.song-detail {
+    margin-top: 1px;
+
+    .app-song-detail {
+        width: 100%;
+        padding: 10px;
+        background-color: var(--content-bg);
+        border-radius: 14px;
+        border: 1px solid var(--theme-bg-color);
+        padding: 5px;
+        font-size: 16px;
+
+        .cover-img-size {
+            width: 250px;
+            position: relative;
+            display: inline;
+
+            img {
+                border-radius: 10px;
+                display: block;
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+
+        .song-info {
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+
+            p {
+                color: var(--inactive-color);
+            }
+
+            .song-list-title {
+                font-weight: 200;
+                display: inline;
+                margin: 5px 0;
+            }
+
+            .author {
+                display: flex;
+                flex-direction: row;
+                height: 50px;
+                line-height: 50px;
+
+                span {
+                    margin-left: 15px;
+                }
+            }
+
+            .tags {
+                display: flex;
+                flex-direction: row;
+
+                p {
+                    padding: 0;
+                    margin: 10px 0;
+                    font-size: 14px;
+
+                }
+
+                ul {
+                    padding: 0;
+                    margin: 10px 0;
+
+                    li {
+                        margin-left: 10px;
+                        list-style: none;
+                        color: var(--inactive-color);
+                        font-size: 14px;
+                    }
+                }
+
+            }
+
+            .introduction {
+                margin: 0;
+                font-size: 14px;
+            }
+        }
+
+    }
+
+    .song-list-wrap {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+
+
+
+
+
+
+
 
 .song_items {
     display: flex;
@@ -268,34 +305,33 @@ watch(currentPageComment, async () => {
     margin: 0;
     border-radius: 14px;
     border: 1px solid var(--theme-bg-color);
+
     /* cursor: pointer; */
-}
+    li {
+        list-style: none;
+        padding: 2px 18px;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        width: 100%;
+        height: 100%;
+        white-space: nowrap;
+        transition: 0.3s;
 
-.song_items li {
-    list-style: none;
-    padding: 2px 18px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    width: 100%;
-    height: 100%;
-    white-space: nowrap;
-    transition: 0.3s;
-}
+        li:hover {
+            background-color: var(--theme-bg-color);
+        }
 
-.song_items li:hover {
-    background-color: var(--theme-bg-color);
-}
+        li:hover:first-child {
+            border-radius: 13px 13px 0 0;
+        }
 
-.song_items li:hover:first-child {
-    border-radius: 13px 13px 0 0;
-}
+        li:hover:last-child {
+            border-radius: 0 0 13px 13px;
+        }
 
-.song_items li:hover:last-child {
-    border-radius: 0 0 13px 13px;
-}
-
-.song_items li+li {
-    border-top: 1px solid var(--border-color);
-}
-</style>
+        li+li {
+            border-top: 1px solid var(--border-color);
+        }
+    }
+}</style>

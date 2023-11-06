@@ -10,3 +10,26 @@ defineProps<{
     num: number
 }>()
 </script>
+<style scoped lang="scss">
+.notification {
+    position: relative;
+
+    .notification-number {
+        position: absolute;
+        background-color: #3a6df0;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        right: -6px;
+        top: -6px;
+    }
+}
+.notification+svg {
+    margin-left: 22px;
+}
+</style>
