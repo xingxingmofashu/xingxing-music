@@ -166,9 +166,9 @@ watch(currentPageComment, async () => {
 }
 
 .menu-link-main {
-    color: var(--content-title-color);
-    margin-bottom: 10px;
-    margin-top: 10px;
+    text-decoration: none;
+    color: var(--theme-color);
+    padding: 0 30px;
 }
 
 .button-set {
