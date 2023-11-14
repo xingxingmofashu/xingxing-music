@@ -4,6 +4,7 @@
   "private": true,
   "packageManager": "pnpm@8.6.10",
   "main": "dist-electron/main.js",
+  "productName":"星星音乐",
   "scripts": {
     "dev": "nuxt dev ",
     "build": "nuxt build",
@@ -12,7 +13,7 @@
     "postinstall": "nuxt prepare",
     "dev:electron": "IS_ELECTRON=true nuxt dev && electron . ",
     "build:electron": "IS_ELECTRON=true nuxt build --prerender && electron-builder",
-    "dev:proxy": "cd proxy && pnpm dev"
+    "dev:proxy": "pnpm run -C proxy dev"
   },
   "devDependencies": {
     "@element-plus/nuxt": "^1.0.5",
