@@ -7,9 +7,9 @@
           <Header></Header>
         </ElHeader>
         <div class="wrapper">
-          <el-aside width="200px">
+          <ElAside width="200px">
             <Left />
-          </el-aside>
+          </ElAside>
           <ElMain class="el-main">
             <div class="main-container">
               <NuxtPage />
