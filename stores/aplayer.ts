@@ -1,3 +1,4 @@
+import { defineStore } from "pinia"
 import { APlayer } from "~/types"
 export const useAPlayerStore = defineStore('APlayer', {
     state: (): {

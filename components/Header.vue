@@ -87,6 +87,7 @@
 </template>
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
+import { useElectronStore } from '~/stores/electron';
 
 const { $windowClose, $windowMaximize, $windowMinimize } = useNuxtApp();
 const electronStore = useElectronStore();

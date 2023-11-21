@@ -1,3 +1,4 @@
+import { defineStore } from "pinia";
 import { leftMenus, mainHeaderMenus } from "~/constants/menus-groups";
 
 export const useMenusStore = defineStore("menus", {

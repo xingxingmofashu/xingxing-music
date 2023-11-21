@@ -6,6 +6,8 @@
 import APlayer from "aplayer"
 import 'aplayer/dist/APlayer.min.css';
 import { storeToRefs } from 'pinia';
+import { useAPlayerStore } from "~/stores/aplayer";
+
 const aPlayer = useAPlayerStore();
 const { audios, playingAudio, paused } = storeToRefs(aPlayer)
 const { fixed, mini, autoplay, theme, listFolded, listMaxHeight, loop, lrcType, order, preload, volume, storageName, mutex } = withDefaults(defineProps<{

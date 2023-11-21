@@ -13,6 +13,8 @@
     </ElRow>
 </template>
 <script lang="ts" setup>
+import { useMenusStore } from '~/stores/menus';
+
 
 const activeKey = ref<string | undefined | null>('');
 const route = useRoute();

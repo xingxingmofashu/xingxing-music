@@ -13,6 +13,7 @@
     </div>
 </template>
 <script lang="ts" setup>
+import { useMenusStore } from '~/stores/menus';
 
 const menus = useMenusStore()
 const { left: groups } = menus;

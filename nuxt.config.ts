@@ -28,19 +28,10 @@ export default defineNuxtConfig({
       entry: 'electron/preload.ts'
     }] : []
   },
-  /* nitro: {
+  nitro: {
     routeRules: {
       '/**': { isr: false },
     },
-  }, */
-  imports: {
-    dirs: ['./stores'],
-  },
-  pinia: {
-    autoImports: ['defineStore', 'acceptHMRUpdate'],
-  },
-  vite: {
-    plugins: [],
   },
   appConfig: {
     limit: 24

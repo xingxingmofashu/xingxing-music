@@ -30,6 +30,7 @@
 </template>
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
+import { useAPlayerStore } from '~/stores/aplayer';
 
 const { audio, artist, name } = defineProps<{
     id: number,
