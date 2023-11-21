@@ -28,11 +28,11 @@ export default defineNuxtConfig({
       entry: 'electron/preload.ts'
     }] : []
   },
-  nitro: {
+  /* nitro: {
     routeRules: {
       '/**': { isr: false },
     },
-  },
+  }, */
   appConfig: {
     limit: 24
   },
