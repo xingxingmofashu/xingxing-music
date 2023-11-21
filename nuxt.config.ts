@@ -1,6 +1,7 @@
 const isDev = process.env.NODE_ENV === 'development'
 const isElectron = process.env.IS_ELECTRON === 'true'
 export default defineNuxtConfig({
+  ssr:false
   /* app: {
     head: {
       htmlAttrs: {
