@@ -1,8 +1,8 @@
 const isDev = process.env.NODE_ENV === 'development'
 const isElectron = process.env.IS_ELECTRON === 'true'
 export default defineNuxtConfig({
-  ssr:false
-  /* app: {
+  ssr:false,
+  app: {
     head: {
       htmlAttrs: {
         lang: "zh-CN"
@@ -28,11 +28,11 @@ export default defineNuxtConfig({
       entry: 'electron/preload.ts'
     }] : []
   },
-  nitro: {
+  /* nitro: {
     routeRules: {
       '/**': { isr: false },
     },
-  },
+  }, */
   imports: {
     dirs: ['./stores'],
   },
@@ -49,5 +49,5 @@ export default defineNuxtConfig({
     public: {
       apiBaseUrl: isDev ? process.env.NETEASE_API_BASEURL : "https://netease-cloud-music-api-tau-tan.vercel.app/"
     },
-  } */
+  }
 })
