@@ -1,7 +1,6 @@
 const isDev = process.env.NODE_ENV === 'development'
 const isElectron = process.env.IS_ELECTRON === 'true'
 export default defineNuxtConfig({
-  ssr:false,
   app: {
     head: {
       htmlAttrs: {
@@ -14,12 +13,12 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/music.ico' }],
     }
   },
+  ssr:false,
   css: ['@/assets/main.css'],
   modules: [
     '@pinia/nuxt',
     '@element-plus/nuxt',
     'nuxt-lodash',
-    'nuxt-electron'
   ],
   electron: {
     build: isElectron ? [{
@@ -28,11 +27,20 @@ export default defineNuxtConfig({
       entry: 'electron/preload.ts'
     }] : []
   },
-  /* nitro: {
+  nitro: {
     routeRules: {
       '/**': { isr: false },
     },
-  }, */
+  },
+  imports: {
+    dirs: ['./stores'],
+  },
+  pinia: {
+    autoImports: ['defineStore', 'acceptHMRUpdate'],
+  },
+  vite: {
+    plugins: [],
+  },
   appConfig: {
     limit: 24
   },
