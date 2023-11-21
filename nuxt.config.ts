@@ -1,7 +1,7 @@
 const isDev = process.env.NODE_ENV === 'development'
 const isElectron = process.env.IS_ELECTRON === 'true'
 export default defineNuxtConfig({
-  app: {
+  /* app: {
     head: {
       htmlAttrs: {
         lang: "zh-CN"
@@ -13,7 +13,6 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/music.ico' }],
     }
   },
-  ssr: false,
   css: ['@/assets/main.css'],
   modules: [
     '@pinia/nuxt',
@@ -49,5 +48,5 @@ export default defineNuxtConfig({
     public: {
       apiBaseUrl: isDev ? process.env.NETEASE_API_BASEURL : "https://netease-cloud-music-api-tau-tan.vercel.app/"
     },
-  }
+  } */
 })
