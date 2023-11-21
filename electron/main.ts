@@ -1,17 +1,19 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
-import path from 'path'
+import { resolve } from 'path'
 
-process.env.ROOT = path.join(__dirname, '..')
-process.env.DIST = path.join(process.env.ROOT, 'dist-electron')
-process.env.VITE_PUBLIC = process.env.VITE_DEV_SERVER_URL
-    ? path.join(process.env.ROOT, 'public')
-    : path.join(process.env.ROOT, '.output/public')
-process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
-const preload = path.join(process.env.DIST, 'preload.js')
+const root = resolve(__dirname, '..');
+const distElectron = resolve(root, 'dist-electron');
+const VITE_DEV_SERVER_URL = process.env.VITE_DEV_SERVER_URL;
+
+const VITE_PUBLIC = VITE_DEV_SERVER_URL
+    ? resolve(root, 'public')
+    : resolve(root, '.output/public')
+
+const preload = resolve(distElectron, 'preload.js')
 
 const createWindow = () => {
     const win = new BrowserWindow({
-        icon: path.join(__dirname, '..', './public/music.ico'),
+        icon: resolve(__dirname, '..', './public/music.ico'),
         minWidth: 1100,
         minHeight: 600,
         frame: false,
@@ -23,11 +25,11 @@ const createWindow = () => {
             webSecurity: false,
         },
     })
-    if (process.env.VITE_DEV_SERVER_URL) {
-        win.loadURL(process.env.VITE_DEV_SERVER_URL)
+    if (VITE_DEV_SERVER_URL) {
+        win.loadURL(VITE_DEV_SERVER_URL)
         win.webContents.openDevTools()
     } else {
-        win.loadFile(path.join(process.env.VITE_PUBLIC!, 'index.html'))
+        win.loadFile(resolve(VITE_PUBLIC!, 'index.html'))
     }
 
     ipcMain.handle('window-close', () => {
@@ -40,7 +42,7 @@ const createWindow = () => {
         if (win.isMaximized())
             win.restore()
         else
-            win.maximize(); 
+            win.maximize();
     })
 }
 
