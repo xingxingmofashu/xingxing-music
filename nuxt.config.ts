@@ -13,12 +13,13 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/music.ico' }],
     }
   },
-  ssr:false,
+  ssr: false,
   css: ['@/assets/main.css'],
   modules: [
     '@pinia/nuxt',
     '@element-plus/nuxt',
     'nuxt-lodash',
+    isElectron ? 'nuxt-electron' : undefined
   ],
   electron: {
     build: isElectron ? [{
