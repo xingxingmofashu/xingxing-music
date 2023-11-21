@@ -2,7 +2,7 @@
   <ClientOnly>
     <ElContainer class="container">
       <Background />
-      <div class="content">
+      <!-- <div class="content">
         <ElHeader>
           <Header></Header>
         </ElHeader>
@@ -18,7 +18,7 @@
         </div>
 
         <aplayer />
-      </div>
+      </div> -->
     </ElContainer>
   </ClientOnly>
 </template>
