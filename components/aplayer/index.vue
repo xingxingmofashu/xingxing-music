@@ -3,6 +3,7 @@
 </template>
   
 <script lang="ts" setup>
+//@ts-ignore
 import APlayer from "aplayer"
 import 'aplayer/dist/APlayer.min.css';
 import { storeToRefs } from 'pinia';
