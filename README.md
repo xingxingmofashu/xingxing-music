@@ -1,48 +1,31 @@
-# Nuxt Example
+<h1 align="center">
+    星星音乐 
+</h1>
 
-Deploy your [Nuxt](https://nuxt.com) project to Vercel with zero configuration.
+<div align="center">
+    <img src="./.github/assets/demo.png" style="object-fit:fill;"/>
+</div>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/nuxtjs&template=nuxtjs)
+# Overview
+The Project is built with:
+- [Nuxt.js](https://nuxt.com/)
+- [Typescript](https://www.typescriptlang.org/)
 
-_Live Example: https://nuxtjs-template.vercel.app_
+# Quickstart
 
-Look at the [Nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+### Install dependencies
 
-## Setup
+Use pnpm to install all dependencies.
 
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
+```shell
+pnpm install
 ```
 
-## Development Server
+# Getting Started
 
-Start the development server on http://localhost:3000
+First, run the development server:
 
-```bash
-npm run dev
+```shell
+cd xingxing-music
+pnpm dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://nuxt.com/docs/getting-started/deployment#presets) for more information.
