@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <div h-full w-full>
+    <ElContainer class="container">
       <Background />
       <div class="content">
         <ElHeader>
@@ -16,9 +16,10 @@
             </div>
           </ElMain>
         </div>
-        <Aplayer />
+
+        <aplayer />
       </div>
-    </div>
+    </ElContainer>
   </ClientOnly>
 </template>
 <style scoped lang="scss">
@@ -45,10 +46,8 @@
     display: flex;
     flex-grow: 1;
     overflow: hidden;
-
     .el-main {
-      --el-main-padding: 0;
-
+      --el-main-padding:0;
       .main-container {
         display: flex;
         flex-direction: column;

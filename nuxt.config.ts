@@ -16,18 +16,11 @@ export default defineNuxtConfig({
   ssr: false,
   css: ['@/assets/main.css'],
   modules: [
-    "@vueuse/nuxt",
-    "@unocss/nuxt",
-    "@nuxtjs/color-mode",
     '@pinia/nuxt',
     '@element-plus/nuxt',
     'nuxt-lodash',
-    '@pinia/nuxt',
-    'nuxt-electron'
+    isElectron ? 'nuxt-electron' : undefined
   ],
-  colorMode:{
-    classSuffix:''
-  },
   electron: {
     build: isElectron ? [{
       entry: 'electron/main.ts'
